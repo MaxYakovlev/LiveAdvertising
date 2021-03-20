@@ -27,6 +27,9 @@ namespace LiveAdvertising.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+                return Redirect("/");
+
             return View();
         }
 
@@ -56,6 +59,9 @@ namespace LiveAdvertising.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+                return Redirect("/");
+
             return View();
         }
 
@@ -66,7 +72,7 @@ namespace LiveAdvertising.Controllers
             {
                 string encryptedPassword = Cryptography.EncryptPassword(model.Password);
 
-                Shop shop = await context.Shops.Where(x => x.Name == model.Name || x.Password == encryptedPassword).FirstOrDefaultAsync();
+                Shop shop = await context.Shops.Where(x => x.Name == model.Name && x.Password == encryptedPassword).FirstOrDefaultAsync();
 
                 if(shop == null)
                 {
