@@ -38,19 +38,24 @@ namespace LiveAdvertising.Controllers
         {
             if (ModelState.IsValid)
             {
-                Shop shop = new Shop();
+                Shop shop = await context.Shops.Where(x => x.Name == model.Name).FirstOrDefaultAsync();
 
-                shop.Name = model.Name;
-                shop.Email = model.Email;
-                shop.Password = Cryptography.EncryptPassword(model.Password);
+                if (shop != null)
+                    ModelState.AddModelError("", $"Магазин \"{model.Name}\" уже зарегестрирован");
+                else
+                {
+                    shop.Name = model.Name;
+                    shop.Email = model.Email;
+                    shop.Password = Cryptography.EncryptPassword(model.Password);
 
-                await context.Shops.AddAsync(shop);
+                    await context.Shops.AddAsync(shop);
 
-                await context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
 
-                await Authenticate(shop, model.RememberMe);
+                    await Authenticate(shop, model.RememberMe);
 
-                return Redirect("/");
+                    return Redirect("/");
+                }
             }
 
             return View(model);

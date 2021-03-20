@@ -74,9 +74,13 @@ namespace LiveAdvertising.Controllers
                 .Include(x => x.Shop)
                 .FirstOrDefaultAsync();
 
+            if(stream == null)
+                return Redirect("/");
+
             StreamInfoDto streamInfo = new StreamInfoDto();
             streamInfo.Source = stream.Source;
             streamInfo.Products = stream.Products;
+            streamInfo.ShopName = stream.Shop.Name;
 
             return View(streamInfo);
         }

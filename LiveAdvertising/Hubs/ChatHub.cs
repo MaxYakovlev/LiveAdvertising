@@ -8,11 +8,23 @@ namespace LiveAdvertising.Hubs
 {
     public class ChatHub : Hub
     {
-        public override async Task OnConnectedAsync()
+        public async Task AddToGroup(string id)
         {
-            await base.OnConnectedAsync();
+            await Groups.AddToGroupAsync(Context.ConnectionId, id);
+        }
 
-            await Clients.Caller.SendAsync("Connected");
+        public async Task ShopSendMessage(string id, string message)
+        {
+            string hourMinutes = DateTime.Now.ToString("HH:mm");
+
+            await Clients.OthersInGroup(id).SendAsync("ShopSendMessage", message, hourMinutes);
+        }
+
+        public async Task UserSendMessage(string id, string message)
+        {
+            string hourMinutes = DateTime.Now.ToString("HH:mm");
+
+            await Clients.OthersInGroup(id).SendAsync("UserSendMessage", message, hourMinutes);
         }
     }
 }

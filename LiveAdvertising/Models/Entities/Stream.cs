@@ -16,10 +16,10 @@ namespace LiveAdvertising.Models.Entities
 
         public string Products { get; set; }
 
-        public int ShopId { get; set; }
-
         [Column(TypeName = "boolean")]
         public bool isActive { get; set; }
+
+        public int ShopId { get; set; }
 
         public Shop Shop { get; set; }
 

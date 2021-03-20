@@ -12,7 +12,7 @@ body {
     height: 100%;
 }
 
-.chat-messages {
+#chat-messages {
     display: flex;
     flex-direction: column;
     min-height: 300px;
@@ -26,13 +26,17 @@ body {
     flex-shrink: 0
 }
 
+.chat-message-text-right{
+    margin-right: 25px;
+}
+
 .chat-message-left {
     margin-right: auto
 }
 
 .chat-message-right {
     flex-direction: row-reverse;
-    margin-left: auto
+    margin-left: auto;
 }
 
 .product-img {

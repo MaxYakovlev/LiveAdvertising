@@ -16,5 +16,7 @@ namespace LiveAdvertising.Models.Dto
         public string Products { private get; set; }
 
         public Catalog GetCatalog() => Catalog.Deserialize(Products);
+
+        public string ShopName { get; set; }
     }
 }
