@@ -8,122 +8,107 @@
 <link rel="stylesheet" href="~/css/watch.css" asp-append-version="true" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 
-<div id="watch-wrapper">
-    <iframe width="80%" height="100%" src="https://www.youtube.com/embed/@Model.GetSourceId()?autoplay=1" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <!-- Tabs navs -->
-    <div>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Чат</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Товары</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Корзина</a>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                <div class="col">
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-lg-8">
+            <iframe class="iframe-stream" width="100%" height="710px" src="https://www.youtube.com/embed/@Model.GetSourceId()?autoplay=1" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- Tabs navs -->
+        <div class="col-lg-4">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Чат</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Товары</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Корзина</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="h3 mb-3 mt-2">Чат</div>
                     <div class="position-relative">
                         <div class="chat-messages p-4">
-                            <div class="chat-message-right mb-4">
+                            <div class="chat-message-left mb-4">
                                 <div>
                                     <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">16:20</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                <div class="bg-light rounded py-2 px-3 ml-3">
                                     <div class="font-weight-bold mb-1">Anonim 1</div>
                                     Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
                                 </div>
                             </div>
-                            <div class="chat-message-left pb-4">
+                            <div class="chat-message-left mb-4">
                                 <div>
                                     <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">16:21</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                <div class="bg-light rounded py-2 px-3 ml-3">
                                     <div class="font-weight-bold mb-1">Anonim 2</div>
                                     Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
                                 </div>
                             </div>
-                            <div class="chat-message-right mb-4">
+                            <div class="chat-message-left mb-4">
                                 <div>
                                     <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">16:22</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                <div class="bg-light rounded py-2 px-3 ml-3">
                                     <div class="font-weight-bold mb-1">Anonim 1</div>
                                     Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
                                 </div>
                             </div>
-                            <div class="chat-message-left pb-4">
+                            <div class="chat-message-left mb-4">
                                 <div>
                                     <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">16:22</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                <div class="bg-light rounded py-2 px-3 ml-3">
                                     <div class="font-weight-bold mb-1">Anonim 2</div>
                                     Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
                                 </div>
                             </div>
-                            <div class="chat-message-left pb-4">
+                            <div class="chat-message-left mb-4">
                                 <div>
                                     <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">16:23</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                                <div class="bg-light rounded py-2 px-3 ml-3">
                                     <div class="font-weight-bold mb-1">Anonim 2</div>
                                     Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
                                 </div>
                             </div>
-                            <div class="chat-message-left pb-4">
-                                <div>
-                                </div>
-                                <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
-                                <div class="text-muted small text-nowrap mt-2">16:23</div>
-                            </div>
-                            <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                                <div class="font-weight-bold mb-1">Anonim 2</div>
-                                Cras risus ex, imperdiet id augue non, fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies lacus.
-                            </div>
+                        </div>
+                    </div>
+                    <div class="py-3 px-4 border-top">
+                        <div class="input-group">
+                            <textarea rows="3" class="form-control message-area" placeholder="Сообщение"></textarea>
+                            <button class="btn btn-primary ml-2 send-button">Отправить</button>
                         </div>
                     </div>
                 </div>
-                <div class="py-3 px-4 border-top">
-                    <div class="input-group">
-                        <textarea rows="3" class="form-control message-area" placeholder="Сообщение"></textarea>
-                        <button class="btn btn-primary ml-2 send-button">Отправить</button>
-                    </div>
-                </div>
+                <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Товары</div>
+                <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Корзина</div>
             </div>
-
-
-            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Товары</div>
-
-
-            <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Корзина</div>
         </div>
-                        </div>
-                    </div>
+    </div>
+</div>
 
-                    <script>
-                        $(function () {
-                            $('#myTab li:last-child a').tab('show')
-                        })
-                    </script>
+<script>
+    $(function () {
+        $('#myTab li:last-child a').tab('show')
+    })
+</script>
 
-                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 
-                    <!--
-        @foreach(var offer in Model.GetCatalog().Shops[0].Offers)
-        {
-            <p>@offer.Name</p>
-        }
-
-            -->
+<!--
+@foreach(var offer in Model.GetCatalog().Shops[0].Offers)
+{
+<p>@offer.Name</p>
+}
+-->

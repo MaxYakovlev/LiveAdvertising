@@ -3,16 +3,20 @@
     padding: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 #watch-wrapper{
     display: flex;
     height: 100%;
 }
 
-
 .chat-messages {
     display: flex;
     flex-direction: column;
-    max-height: 800px;
+    min-height: 300px;
+    height: 700px;
     overflow-y: scroll
 }
 
@@ -49,4 +53,8 @@
 
 .message-area {
     max-height: 87px;
+}
+
+.iframe-stream {
+    min-height: 650px;
 }
