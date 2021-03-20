@@ -1,0 +1,52 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+#watch-wrapper{
+    display: flex;
+    height: 100%;
+}
+
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+
+.product-img {
+    width: 100%;
+}
+
+.price-text {
+    color: #333;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 38px;
+    margin-right: 15px;
+}
+
+.send-button {
+    height: 40px;
+}
+
+.message-area {
+    max-height: 87px;
+}
