@@ -1,0 +1,15 @@
+﻿@model LiveAdvertising.Models.Dto.StreamInfoDto
+
+@{
+    ViewBag.Title = "Стрим";
+}
+
+
+<iframe width="500" height="400" src="https://www.youtube.com/embed/@Model.GetSourceId()?autoplay=1" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--
+@foreach(var offer in Model.GetCatalog().Shops[0].Offers)
+{
+    <p>@offer.Name</p>
+}
+
+    -->

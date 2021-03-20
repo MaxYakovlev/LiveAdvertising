@@ -10,6 +10,8 @@ namespace LiveAdvertising.Models.Entities
     {
         public int Id { get; set; }
 
+        public string Title { get; set; }
+
         public string Source { get; set; }
 
         public string Products { get; set; }
