@@ -11,6 +11,7 @@ using LiveAdvertising.Hubs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using LiveAdvertising.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace LiveAdvertising
 {
@@ -27,6 +28,13 @@ namespace LiveAdvertising
         {
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(Configuration.GetConnectionString("HerokuPostgresConnection")));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new PathString("/Account/Login");
+                    options.AccessDeniedPath = new PathString("/Account/Login");
+                });
+
             services.AddControllersWithViews();
             services.AddSignalR();
         }
@@ -40,6 +48,9 @@ namespace LiveAdvertising
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
