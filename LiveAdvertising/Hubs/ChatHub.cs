@@ -26,6 +26,14 @@ namespace LiveAdvertising.Hubs
 
         public async Task CloseStream(string id)
         {
+            Stream stream = await context.Streams.Where(x => x.Id == int.Parse(id)).FirstOrDefaultAsync();
+
+            stream.isActive = false;
+
+            context.Streams.Update(stream);
+
+            await context.SaveChangesAsync();
+
             await Clients.OthersInGroup(id).SendAsync("CloseStream");
         }
 
