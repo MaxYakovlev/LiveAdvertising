@@ -44,6 +44,7 @@ namespace LiveAdvertising.Controllers
                     ModelState.AddModelError("", $"Магазин \"{model.Name}\" уже зарегестрирован");
                 else
                 {
+                    shop = new Shop();
                     shop.Name = model.Name;
                     shop.Email = model.Email;
                     shop.Password = Cryptography.EncryptPassword(model.Password);
