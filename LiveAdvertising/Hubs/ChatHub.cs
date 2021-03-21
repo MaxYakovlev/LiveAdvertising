@@ -24,6 +24,11 @@ namespace LiveAdvertising.Hubs
             await Groups.AddToGroupAsync(Context.ConnectionId, id);
         }
 
+        public async Task CloseStream(string id)
+        {
+            await Clients.OthersInGroup(id).SendAsync("CloseStream");
+        }
+
         [Authorize]
         public async Task ShopSendMessage(string id, string message)
         {

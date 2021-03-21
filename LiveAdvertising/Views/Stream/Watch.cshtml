@@ -134,8 +134,19 @@
     let userSendButton = document.getElementById("user-send-button");
     let shopSendButton = document.getElementById("shop-send-button");
     let chatMessages = document.getElementById("chat-messages");
+    let closeButton = document.getElementById("close");
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    if (closeButton !== null) {
+        closeButton.addEventListener("click", () => {
+            connection.invoke("CloseStream", id);
+        });
+    }
+
+    connection.on("CloseStream", () => {
+        location.href = "/";
+    });
 
     if (shopSendButton !== null) {
         shopSendButton.addEventListener("click", () => {
