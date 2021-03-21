@@ -19,7 +19,7 @@
 				streamObject.productIds.push(productId);
 				switchButtonStatus(addToBasketButtons[i]);
             }
-			else if (productIds.includes(productId))
+			else if (streamObject.productIds.includes(productId))
 			{
 				streamObject.productIds.splice(streamObject.productIds.indexOf(productId), 1);
 				switchButtonStatus(addToBasketButtons[i]);
