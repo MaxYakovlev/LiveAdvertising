@@ -24,9 +24,6 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-list-alt"></i> Товары</a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false"><i class="fa fa-shopping-cart"></i> Корзина</a>
-                </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -80,67 +77,34 @@
                 </div>
                 <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <!--Товары-->
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <img class="product-img" src="https://cdn.goldapple.ru/media/catalog/product/cache/0a19ad76fdd08744e75b836c7a3f78eb/5/0/5060586637866_1_1whmwah7uwsh6fmq.jpg">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Товар</h5>
-                                    <div class="card-text">Fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies.</div>
-                                    <div class="price-text">1000₽</div>
-                                    <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
+                    @foreach(var offer in Model.GetCatalog().Shops[0].Offers) 
+                    {                
+                        @if(offer.Price != null) { 
+                            <div class="card" id="@offer.Id">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img class="product-img" src="@offer.Image">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@offer.Name</h5>
+                                            @if (offer.Params != null)
+                                            {
+                                            <div class="card-text">
+                                                @foreach (var param in offer.Params)
+                                                {
+                                                    <b>@param.Name:</b> @param.Value <br />
+                                                }
+                                            </div>
+                                            }
+                                            <div class="price-text">@offer.Price @offer.CurrencyId</div>
+                                                <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <img class="product-img" src="https://cdn.goldapple.ru/media/catalog/product/cache/0a19ad76fdd08744e75b836c7a3f78eb/5/0/5060586637866_1_1whmwah7uwsh6fmq.jpg">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Товар</h5>
-                                    <div class="card-text">Fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies.</div>
-                                    <div class="price-text">1000₽</div>
-                                    <button class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Удалить из корзины</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Корзина-->
-                <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <img class="product-img" src="https://cdn.goldapple.ru/media/catalog/product/cache/0a19ad76fdd08744e75b836c7a3f78eb/5/0/5060586637866_1_1whmwah7uwsh6fmq.jpg">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Товар</h5>
-                                    <div class="card-text">Fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies.</div>
-                                    <div class="price-text">1000₽</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-4">
-                                <img class="product-img" src="https://cdn.goldapple.ru/media/catalog/product/cache/0a19ad76fdd08744e75b836c7a3f78eb/5/0/5060586637866_1_1whmwah7uwsh6fmq.jpg">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Товар</h5>
-                                    <div class="card-text">Fermentum tempor odio. Nullam consectetur, mi non imperdiet luctus, libero libero ultricies.</div>
-                                    <div class="price-text">1000₽</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
                     <button class="btn btn-success mt-2"><i class="fa fa-external-link"></i> Купить</button>
                 </div>
             </div>
