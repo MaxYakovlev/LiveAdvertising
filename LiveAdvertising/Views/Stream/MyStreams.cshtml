@@ -1,0 +1,30 @@
+﻿@model List<LiveAdvertising.Models.Entities.Stream>
+
+@{
+    ViewBag.Title = "Мои стримы";
+}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <h2>Мои стримы</h2>
+        </div>
+    </div>
+    <div class="row mt-3">
+        @foreach (var stream in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+                <div class="card" style="width: 18rem;">
+                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/@stream.Source.Split("?v=")[1]?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">@stream.Title</h5>
+                        <p class="card-text">Магазин "@stream.Shop.Name"</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="/stream/watch/@stream.Id" class="btn btn-success">Перейти</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

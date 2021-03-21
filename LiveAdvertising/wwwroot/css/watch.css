@@ -87,7 +87,7 @@ body {
     margin-top: 10px;
 }
 
-#to-index {
+#to-index, #copy-link {
     margin-top: 10px;
     margin-left: 5px;
     height: 40px;

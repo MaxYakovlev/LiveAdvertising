@@ -21,6 +21,7 @@
                     <button class="btn btn-danger" id="close">Завершить</button>
                  }
                 <a asp-action="Index" asp-controller="Home" class="btn btn-success" id="to-index">На главную</a>
+                <button class="btn btn-primary" id="copy-link">Копировать ссылку</button>
             </div>
         </div>
         <!-- Tabs navs -->
@@ -141,8 +142,13 @@
     let shopSendButton = document.getElementById("shop-send-button");
     let chatMessages = document.getElementById("chat-messages");
     let closeButton = document.getElementById("close");
+    let copyLinkButton = document.getElementById("copy-link");
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    copyLinkButton.addEventListener("click", () => {
+        navigator.clipboard.writeText(location.href);
+    });
 
     if (closeButton !== null) {
         closeButton.addEventListener("click", () => {

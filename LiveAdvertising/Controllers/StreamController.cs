@@ -34,6 +34,8 @@ namespace LiveAdvertising.Controllers
             {
                 if (model.ProductsFile.ContentType != "text/xml")
                     ModelState.AddModelError("", "Файл должен быть формата xml");
+                else if (!model.Source.Contains("https://www.youtube.com/watch?v="))
+                    ModelState.AddModelError("", "Некорректная ссылка на ютуб трансляцию");
                 else
                 {
                     Entities.Shop shop = await context.Shops.Where(x => x.Name == User.Identity.Name).FirstOrDefaultAsync();
