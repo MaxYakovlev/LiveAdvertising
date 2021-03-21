@@ -81,6 +81,7 @@ namespace LiveAdvertising.Controllers
             streamInfo.Source = stream.Source;
             streamInfo.Products = stream.Products;
             streamInfo.ShopName = stream.Shop.Name;
+            streamInfo.Messages = stream.Messages;
 
             return View(streamInfo);
         }

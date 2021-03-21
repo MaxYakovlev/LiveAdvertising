@@ -31,6 +31,35 @@
                     <div class="h3 mb-3 mt-2">Чат</div>
                     <div class="position-relative">
                         <div id="chat-messages" class="p-4">
+                            @foreach (var msg in Model.Messages)
+                            {
+                                if (msg.isAnswer)
+                                {
+                                    <div class="chat-message-left mb-4">
+                                        <div>
+                                            <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
+                                            <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
+                                        </div>
+                                        <div class="bg-light rounded py-2 px-3 ml-3">
+                                            <div class="font-weight-bold mb-1" style="color: red;">Магазин</div>
+                                            @msg.Text
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="chat-message-left mb-4">
+                                        <div>
+                                            <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
+                                            <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
+                                        </div>
+                                        <div class="bg-light rounded py-2 px-3 ml-3">
+                                            <div class="font-weight-bold mb-1">Зритель</div>
+                                            @msg.Text
+                                        </div>
+                                    </div>
+                                }
+                            }
                         </div>
                     </div>
                     <div class="py-3 px-4 border-top">
@@ -38,10 +67,12 @@
                             <textarea id="message" rows="3" class="form-control message-area" placeholder="Сообщение"></textarea>
                             @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.ShopName)
                             {
-                <button id="shop-send-button" class="btn btn-danger ml-2 send-button">Отправить</button> }
+                                <button id="shop-send-button" class="btn btn-danger ml-2 send-button">Отправить</button> 
+                            }
                             else
                             {
-                <button id="user-send-button" class="btn btn-primary ml-2 send-button">Отправить</button>}
+                                <button id="user-send-button" class="btn btn-primary ml-2 send-button">Отправить</button>
+                            }                            
                         </div>
                     </div>
                 </div>
@@ -85,7 +116,7 @@
                 chatMessage.innerHTML = "<div class=\"chat-message-right mb-4\">" +
                     "<div><img src=\"/images/default_avatar.jpg\" class=\"rounded-circle mr-1\" width=\"40\" height=\"40\">" +
                     "<div class=\"text-muted small text-nowrap mt-2\">" + now.getHours() + ":" + now.getMinutes() + "</div></div><div class=\"bg-light rounded py-2 px-3 ml-3 chat-message-text-right\" style=\"margin-right: 25px;\">" +
-                    "<div class=\"font-weight-bold mb-1\" style=\"color: red;\">Shop</div>" + message +
+                    "<div class=\"font-weight-bold mb-1\" style=\"color: red;\">Магазин</div>" + message +
                     "</div></div>";
 
                 chatMessages.appendChild(chatMessage);
@@ -103,11 +134,16 @@
                 connection.invoke("UserSendMessage", id, message);
 
                 let now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+
+                if (hours >= 0 && hours < 10) hours = "0" + hours;
+                if (minutes >= 0 && minutes < 10) minutes = "0" + minutes;
 
                 let chatMessage = document.createElement("div");
                 chatMessage.innerHTML = "<div class=\"chat-message-right mb-4\">" +
                     "<div><img src=\"/images/default_avatar.jpg\" class=\"rounded-circle mr-1\" width=\"40\" height=\"40\">" +
-                    "<div class=\"text-muted small text-nowrap mt-2\">" + now.getHours() + ":" + now.getMinutes() + "</div></div><div class=\"bg-light rounded py-2 px-3 ml-3 chat-message-text-right\" style=\"margin-right: 25px;\">" +
+                    "<div class=\"text-muted small text-nowrap mt-2\">" + hours + ":" + minutes + "</div></div><div class=\"bg-light rounded py-2 px-3 ml-3 chat-message-text-right\" style=\"margin-right: 25px;\">" +
                     "<div class=\"font-weight-bold mb-1\">Вы</div>" + message +
                     "</div></div>";
 
@@ -127,7 +163,7 @@
         chatMessage.innerHTML = "<div class=\"chat-message-left mb-4\">" +
             "<div><img src=\"/images/default_avatar.jpg\" class=\"rounded-circle mr-1\" width=\"40\" height=\"40\">" +
             "<div class=\"text-muted small text-nowrap mt-2\">" + hourMinutes + "</div></div><div class=\"bg-light rounded py-2 px-3 ml-3\">" +
-            "<div class=\"font-weight-bold mb-1\" style=\"color: red;\">Shop</div>" + message +
+            "<div class=\"font-weight-bold mb-1\" style=\"color: red;\">Магазин</div>" + message +
             "</div></div>";
 
         chatMessages.appendChild(chatMessage);

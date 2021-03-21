@@ -1,4 +1,5 @@
-﻿using LiveAdvertising.Parsing;
+﻿using LiveAdvertising.Models.Entities;
+using LiveAdvertising.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace LiveAdvertising.Models.Dto
         public Catalog GetCatalog() => Catalog.Deserialize(Products);
 
         public string ShopName { get; set; }
+
+        public List<Message> Messages { get; set; }
     }
 }
