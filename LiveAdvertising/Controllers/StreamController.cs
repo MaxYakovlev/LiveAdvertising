@@ -22,12 +22,14 @@ namespace LiveAdvertising.Controllers
             this.context = context;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(StreamDto model)
         {
