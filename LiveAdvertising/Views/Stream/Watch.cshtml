@@ -28,14 +28,49 @@
         <div class="col-lg-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-weixin"></i> Чат</a>
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true"><i class="fa fa-list-alt"></i> Товары</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-list-alt"></i> Товары</a>
+                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false"><i class="fa fa-weixin"></i> Чат</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!--Товары-->
+                    <div id="products">
+                        @foreach (var offer in Model.GetCatalog().Shops[0].Offers)
+                        {
+                            @if (offer.Price != null)
+                            {
+                                <div class="card" id="@offer.Id">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <img class="product-img" src="@offer.Image">
+                                        </div>
+                                        <div class="col-8">
+                                        <div class="card-body">
+                                        <h5 class="card-title">@offer.Name</h5>
+                                         @if (offer.Params != null)
+                                        {
+                                        <div class="card-text">
+                                         @foreach (var param in offer.Params)
+                                        {
+                                            <b>@param.Name:</b> @param.Value <br />
+                                        }
+                                 </div>
+                              }
+                                    <div class="price-text">@offer.Price @offer.CurrencyId</div>
+                                    <button class="btn btn-primary btn-add-to-basket"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                     }
+                    </div>
+                    <button class="btn btn-success mt-2 buy-button"><i class="fa fa-external-link"></i> Купить</button>
+                </div>
+                <div class="tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="position-relative">
                         <div id="chat-messages" class="p-4">
                             @foreach (var msg in Model.Messages)
@@ -82,42 +117,7 @@
                             }
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <!--Товары-->
-                    <div id="products">
-                        @foreach (var offer in Model.GetCatalog().Shops[0].Offers)
-                        {
-                            @if (offer.Price != null)
-                            {
-                                <div class="card" id="@offer.Id">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img class="product-img" src="@offer.Image">
-                                        </div>
-                                        <div class="col-8">
-                                        <div class="card-body">
-                                        <h5 class="card-title">@offer.Name</h5>
-                                         @if (offer.Params != null)
-                                        {
-                                        <div class="card-text">
-                                         @foreach (var param in offer.Params)
-                                        {
-                                            <b>@param.Name:</b> @param.Value <br />
-                                        }
-                                 </div>
-                              }
-                                    <div class="price-text">@offer.Price @offer.CurrencyId</div>
-                                    <button class="btn btn-primary btn-add-to-basket"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                     }
-                    </div>
-                    <button class="btn btn-success mt-2 buy-button"><i class="fa fa-external-link"></i> Купить</button>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
