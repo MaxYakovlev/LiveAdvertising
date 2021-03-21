@@ -24,7 +24,7 @@ namespace LiveAdvertising.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, id);
         }
-
+        [Authorize]
         public async Task CloseStream(string id)
         {
             Stream stream = await context.Streams.Where(x => x.Id == int.Parse(id)).FirstOrDefaultAsync();
