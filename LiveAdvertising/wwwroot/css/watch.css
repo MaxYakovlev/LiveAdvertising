@@ -60,5 +60,6 @@ body {
 }
 
 .iframe-stream {
-    min-height: 650px;
+    min-height: 500px;
+    height: 800px;
 }

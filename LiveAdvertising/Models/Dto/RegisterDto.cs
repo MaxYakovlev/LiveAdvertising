@@ -10,6 +10,7 @@ namespace LiveAdvertising.Models.Dto
     {
         [Required(ErrorMessage = "Введите название магазина")]
         [Display(Name = "Название компании")]
+        [MaxLength(50, ErrorMessage = "Максимальная длина названия - символов")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Введите email")]
