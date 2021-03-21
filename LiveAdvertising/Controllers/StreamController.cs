@@ -74,7 +74,7 @@ namespace LiveAdvertising.Controllers
                 .Include(x => x.Shop)
                 .FirstOrDefaultAsync();
 
-            if(stream == null)
+            if(stream == null || (stream != null && !stream.isActive))
                 return Redirect("/");
 
             StreamInfoDto streamInfo = new StreamInfoDto();
