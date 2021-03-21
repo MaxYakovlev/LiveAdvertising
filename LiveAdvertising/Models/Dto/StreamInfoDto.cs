@@ -21,5 +21,7 @@ namespace LiveAdvertising.Models.Dto
         public string ShopName { get; set; }
 
         public List<Message> Messages { get; set; }
+
+        public string StreamTitle { get; set; }
     }
 }
