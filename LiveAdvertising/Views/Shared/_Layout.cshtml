@@ -24,6 +24,7 @@
                     <ul class="navbar-nav mr-auto"></ul>
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <a asp-controller="Stream" asp-action="MyStreams" class="btn btn-outline-primary my-2 my-sm-0 mr-sm-2" role="button" aria-pressed="true">Мои стримы</a>
                         <a asp-controller="Stream" asp-action="Create" class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" role="button" aria-pressed="true">Создать стрим</a>
                         <a asp-controller="Account" asp-action="SignOut" class="btn btn-outline-danger my-2 my-sm-0" role="button" aria-pressed="true">Выйти</a>
                     }

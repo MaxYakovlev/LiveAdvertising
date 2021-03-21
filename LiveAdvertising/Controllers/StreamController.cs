@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LiveAdvertising.Controllers
 {
@@ -62,6 +63,19 @@ namespace LiveAdvertising.Controllers
             }
 
             return View(model);
+        }
+
+        [Authorize]
+        [Route("mystreams")]
+        [HttpGet]
+        public async Task<IActionResult> MyStreams()
+        {
+            List<Entities.Stream> streams = await context.Streams
+                .Where(x => x.Shop.Name == User.Identity.Name)
+                .Include(x => x.Shop)
+                .ToListAsync();
+
+            return View(streams);
         }
 
         [Route("[action]/{id}")]
