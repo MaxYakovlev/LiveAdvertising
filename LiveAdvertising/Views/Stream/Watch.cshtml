@@ -1,7 +1,25 @@
 ﻿@model LiveAdvertising.Models.Dto.StreamInfoDto
 
 @{ ViewBag.Title = Model.StreamTitle;
-                Layout = null; }
+    Layout = null; }
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+        m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(74307532, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true
+    });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/74307532" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 <link rel="shortcut icon" href="~/images/logo32.png" type="image/x-icon">
 <title>@ViewBag.Title</title>
@@ -18,8 +36,7 @@
             <div id="close-wrapper">
                 @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.ShopName)
                 {
-                    <button class="btn btn-danger" id="close">Завершить</button>
-                 }
+    <button class="btn btn-danger" id="close">Завершить</button>}
                 <a asp-action="Index" asp-controller="Home" class="btn btn-success" id="to-index">На главную</a>
                 <button class="btn btn-primary" id="copy-link">Копировать ссылку</button>
             </div>
@@ -40,33 +57,29 @@
                     <div id="products">
                         @foreach (var offer in Model.GetCatalog().Shops[0].Offers)
                         {
-                            @if (offer.Price != null)
-                            {
-                                <div class="card" id="@offer.Id">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img class="product-img" src="@offer.Image">
-                                        </div>
-                                        <div class="col-8">
-                                        <div class="card-body">
-                                        <h5 class="card-title">@offer.Name</h5>
-                                         @if (offer.Params != null)
-                                        {
-                                        <div class="card-text">
-                                         @foreach (var param in offer.Params)
-                                        {
-                                            <b>@param.Name:</b> @param.Value <br />
-                                        }
-                                 </div>
-                              }
-                                    <div class="price-text">@offer.Price @offer.CurrencyId</div>
-                                    <button class="btn btn-primary btn-add-to-basket"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                     }
+            @if (offer.Price != null)
+            {
+<div class="card" id="@offer.Id">
+    <div class="row">
+        <div class="col-4">
+            <img class="product-img" src="@offer.Image">
+        </div>
+        <div class="col-8">
+            <div class="card-body">
+                <h5 class="card-title">@offer.Name</h5>
+                @if (offer.Params != null)
+                {
+<div class="card-text">
+    @foreach (var param in offer.Params)
+    {
+<b>@param.Name:</b> @param.Value <br />}
+</div>}
+                <div class="price-text">@offer.Price @offer.CurrencyId</div>
+                <button class="btn btn-primary btn-add-to-basket"><i class="fa fa-shopping-cart"></i> Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+</div>}}
                     </div>
                     <button class="btn btn-success mt-2 buy-button"><i class="fa fa-external-link"></i> Купить</button>
                 </div>
@@ -77,30 +90,28 @@
                             {
                                 if (msg.isAnswer)
                                 {
-                                    <div class="chat-message-left mb-4">
-                                        <div>
-                                            <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
-                                            <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
-                                        </div>
-                                        <div class="bg-light rounded py-2 px-3 ml-3">
-                                            <div class="font-weight-bold mb-1" style="color: red;">Магазин</div>
-                                            @msg.Text
-                                        </div>
-                                    </div> 
-                                }
+                <div class="chat-message-left mb-4">
+                    <div>
+                        <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
+                        <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
+                    </div>
+                    <div class="bg-light rounded py-2 px-3 ml-3">
+                        <div class="font-weight-bold mb-1" style="color: red;">Магазин</div>
+                        @msg.Text
+                    </div>
+                </div> }
                                 else
                                 {
-                                    <div class="chat-message-left mb-4">
-                                        <div>
-                                            <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
-                                            <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
-                                        </div>
-                                        <div class="bg-light rounded py-2 px-3 ml-3">
-                                            <div class="font-weight-bold mb-1">Зритель</div>
-                                            @msg.Text
-                                        </div>
-                                    </div>
-                                }
+                <div class="chat-message-left mb-4">
+                    <div>
+                        <img src="~/images/default_avatar.jpg" class="rounded-circle mr-1" width="40" height="40">
+                        <div class="text-muted small text-nowrap mt-2">@msg.Time</div>
+                    </div>
+                    <div class="bg-light rounded py-2 px-3 ml-3">
+                        <div class="font-weight-bold mb-1">Зритель</div>
+                        @msg.Text
+                    </div>
+                </div>}
                             }
                         </div>
                     </div>
@@ -109,15 +120,13 @@
                             <textarea id="message" rows="3" class="form-control message-area" placeholder="Сообщение"></textarea>
                             @if (User.Identity.IsAuthenticated && User.Identity.Name == Model.ShopName)
                             {
-                                <button id="shop-send-button" class="btn btn-danger ml-2 send-button">Отправить</button> 
-                            }
+                <button id="shop-send-button" class="btn btn-danger ml-2 send-button">Отправить</button> }
                             else
                             {
-                                <button id="user-send-button" class="btn btn-primary ml-2 send-button">Отправить</button>
-                            }
+                <button id="user-send-button" class="btn btn-primary ml-2 send-button">Отправить</button>}
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
