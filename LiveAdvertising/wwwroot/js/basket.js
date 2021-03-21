@@ -11,14 +11,20 @@
 		let productId = addToBasketButtons[i].parentElement.parentElement.parentElement.parentElement.getAttribute('id');
 		if (streamObject.productIds.includes(productId))
 			switchButtonStatus(addToBasketButtons[i]);
+
 		addToBasketButtons[i].addEventListener("click", () => {
 			let productId = addToBasketButtons[i].parentElement.parentElement.parentElement.parentElement.getAttribute('id');
-			if (addToBasketButtons[i].classList.contains("btn-primary"))
+			if (addToBasketButtons[i].classList.contains("btn-primary") && !streamObject.productIds.includes(productId))
+			{
 				streamObject.productIds.push(productId);
-			else
+				switchButtonStatus(addToBasketButtons[i]);
+            }
+			else if (productIds.includes(productId))
+			{
 				streamObject.productIds.splice(streamObject.productIds.indexOf(productId), 1);
+				switchButtonStatus(addToBasketButtons[i]);
+            }
 			localStorage.setItem("streamObject", JSON.stringify(streamObject));
-			switchButtonStatus(addToBasketButtons[i]);
 		});
 	}
 
